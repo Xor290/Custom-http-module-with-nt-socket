@@ -10,9 +10,9 @@ Tout repose sur trois couches basses :
 
 ```mermaid
 graph TD
-    A[Application Rust] --> B[NtDeviceIoControlFile\nsyscall NT]
-    B --> C[\Device\Afd\nafd.sys]
-    C --> D[\Device\Tcp\ntcpip.sys]
+    A[Application Rust] --> B["NtDeviceIoControlFile\nsyscall NT"]
+    B --> C["\\Device\\Afd\nafd.sys"]
+    C --> D["\\Device\\Tcp\ntcpip.sys"]
     D --> E[Réseau]
 
     style A fill:#4a4a8a,color:#fff
@@ -147,8 +147,8 @@ block-beta
 ```mermaid
 sequenceDiagram
     participant App
-    participant AFD as \Device\Afd (afd.sys)
-    participant TCP as \Device\Tcp
+    participant AFD as Afd (afd.sys)
+    participant TCP as Tcp (ntcpip.sys)
 
     App->>AFD: NtCreateFile + EA buffer
     AFD-->>App: HANDLE socket
